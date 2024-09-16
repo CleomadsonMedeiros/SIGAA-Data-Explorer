@@ -1,0 +1,1 @@
+verificarAluno(Matricula) :- aluno(_,Matricula,_,_).
