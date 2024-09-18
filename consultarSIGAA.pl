@@ -34,7 +34,7 @@ verificar_departamento_aluno(Matricula) :-
         fail
     ).
 
-% Verificar o departamento de um aluno com base na matrícula
+% Verificar o departamento de um aluno com base no nome completo
 verificar_departamento_professor(NomeCompleto) :-
     (   professor_DSI(_, NomeCompleto) ->
         format('Departamento de Sistemas de Informacao (DSI).~n')
@@ -58,7 +58,7 @@ primeiro_nome(Nome, PrimeiroNome) :-
     atom_chars(PrimeiroNome, ListaPrimeiroNome). % Converte a lista de caracteres de volta para um nome (átomo)
 
 
-% Buscar nome do aluno a partir da matrícula
+% Buscar o aluno a partir da matrícula
 buscar_aluno(Matricula) :-
     (   aluno_DSI(_, Matricula, Nome) ->
         format('A matricula ~w corresponde ao aluno ~w em DSI.~n', [Matricula, Nome]),!
@@ -67,7 +67,7 @@ buscar_aluno(Matricula) :-
     ;   fail
     ).
 
-% Buscar matrícula do aluno a partir do nome completo
+% Buscar o aluno a partir do nome completo
 buscar_aluno(NomeCompleto) :-
     (   aluno_DSI(_, Matricula, NomeCompleto) ->
         format('O aluno ~w tem a matrícula ~w em DSI.~n', [NomeCompleto, Matricula]),!
@@ -76,7 +76,7 @@ buscar_aluno(NomeCompleto) :-
     ;   fail
     ).
 
-% Predicado para buscar matrícula do aluno a partir do primeiro nome fornecido
+% Predicado para buscar o aluno a partir do primeiro nome fornecido
 buscar_aluno(PrimeiroNomeFornecido) :-
     (   aluno_DSI(_, Matricula, Nome), % Obtém o nome completo do aluno
         primeiro_nome(Nome, PrimeiroNomeAluno), % Extrai o primeiro nome do aluno
