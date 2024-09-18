@@ -3,7 +3,7 @@
 carregar_arquivo(Arquivo) :-
     ( exists_file(Arquivo) ->
         consult(Arquivo)
-    ;   format('O arquivo ~w não existe.~n~n', [Arquivo])
+    ;   format('O arquivo ~w nao existe.~n~n', [Arquivo])
     ).
 
 %Uso o predicado para carregar os arquivos com os dados dos alunos.
@@ -14,19 +14,19 @@ carregar_arquivo(Arquivo) :-
 
 verificarAluno(Matricula) :-
     (   aluno_DSI(_, Matricula, _) ->
-        format('A matrícula ~w foi encontrada em alunos_DSI.~n', [Matricula])
+        format('A matricula ~w foi encontrada em alunos_DSI.~n', [Matricula])
     ;   aluno_DCOMP(_, Matricula, _) ->
-        format('A matrícula ~w foi encontrada em alunos_DCOMP.~n', [Matricula])
-    ;   format('A matrícula ~w não foi encontrada em nenhum dos registros.~n', [Matricula]),
+        format('A matricula ~w foi encontrada em alunos_DCOMP.~n', [Matricula])
+    ;   format('A matricula ~w não foi encontrada em nenhum dos registros.~n', [Matricula]),
         fail
     ).
 
 verificarDepartamento(Matricula) :-
     (   aluno_DSI(_, Matricula, _) ->
-        format('Departamento de Sistemas de Informação (DSI).~n')
+        format('Departamento de Sistemas de Informacao (DSI).~n')
     ;   aluno_DCOMP(_, Matricula, _) ->
-        format('Departamento de Computação (DCOMP).~n')
-    ;   format('A matrícula ~w não foi encontrada em nenhum dos departamentos.~n', [Matricula]),
+        format('Departamento de Computacao (DCOMP).~n')
+    ;   format('A matricula ~w não foi encontrada em nenhum dos departamentos.~n', [Matricula]),
         fail
     ).
 
