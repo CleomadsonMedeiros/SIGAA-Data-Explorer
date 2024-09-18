@@ -18,7 +18,7 @@ def criarFatosAlunos_DSI():
             try:
                 matricula = linha.find('td', class_='colMatricula').text.strip() #Guarda em matrícula que está na classse colMatricula
                 aluno = linha.find_all('td')[1].text.strip() #Vai para linha seguinte e guarda o nome do aluno
-                arquivo.write(f'aluno("DISCENTE","{matricula}", "{aluno}", "DSI").\n') #Escreve no arquivo os dados dos alunos no formato de fatos, quebrando a linha a cada aluno.
+                arquivo.write(f"aluno_DSI(discente,'{matricula}', '{aluno}').\n") #Escreve no arquivo os dados dos alunos no formato de fatos, quebrando a linha a cada aluno.
             except:
                 print("Tabela Finalizada.")
 
@@ -35,7 +35,7 @@ def criarFatosProfessores_DSI():
         for linha in linhas:
             nome = linha.find('span', class_='nome').text.strip()
             nome = nome.replace('\n', '').replace('\t', '').strip()
-            arquivo.write(f'professor("DOCENTE","{nome}", "DSI").\n')
+            arquivo.write(f"professor_DSI(docente,'{nome}').\n")
 
 def criarFatosAlunos_DCOMP():
     url = 'https://sigaa.ufs.br/sigaa/public/curso/alunos.jsf?lc=pt_BR&id=320197'
@@ -53,7 +53,7 @@ def criarFatosAlunos_DCOMP():
             try:
                 matricula = linha.find('td', class_='colMatricula').text.strip() 
                 aluno = linha.find_all('td')[1].text.strip()
-                arquivo.write(f'aluno("DISCENTE","{matricula}", "{aluno}", "DCOMP").\n')
+                arquivo.write(f"aluno_DCOMP(discente,'{matricula}', '{aluno}').\n")
             except:
                 print("Tabela Finalizada.")
 
@@ -70,5 +70,5 @@ def criarFatosProfessores_DCOMP():
         for linha in linhas:
             nome = linha.find('span', class_='nome').text.strip()
             nome = nome.replace('\n', '').replace('\t', '').strip()
-            arquivo.write(f'professor("DOCENTE","{nome}", "DCOMP").\n')
+            arquivo.write(f"professor_DCOMP(docente,'{nome}').\n")
 
