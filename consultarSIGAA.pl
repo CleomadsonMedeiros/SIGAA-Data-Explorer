@@ -40,7 +40,22 @@ verificarProfessor(NomeCompleto) :-
         fail
     ).
 
+% Buscar nome do aluno a partir da matrícula
+buscarAluno(Matricula) :-
+    (   aluno_DSI(_, Matricula, Nome) ->
+        format('A matricula ~w corresponde ao aluno ~w em DSI.~n', [Matricula, Nome])
+    ;   aluno_DCOMP(_, Matricula, Nome) ->
+        format('A matricula ~w corresponde ao aluno ~w em DCOMP.~n', [Matricula, Nome])
+    ;   format('A matricula ~w não foi encontrada em nenhum dos registros.~n', [Matricula]),
+        fail
+    ).
 
-
-
-
+% Buscar matrícula do aluno a partir do nome completo
+buscarAluno(NomeCompleto) :-
+    (   aluno_DSI(_, Matricula, NomeCompleto) ->
+        format('O aluno ~w tem a matrícula ~w em DSI.~n', [NomeCompleto, Matricula])
+    ;   aluno_DCOMP(_, Matricula, NomeCompleto) ->
+        format('O aluno ~w tem a matrícula ~w em DCOMP.~n', [NomeCompleto, Matricula])
+    ;   format('O aluno ~w não foi encontrado em nenhum dos registros.~n', [NomeCompleto]),
+        fail
+    ).
