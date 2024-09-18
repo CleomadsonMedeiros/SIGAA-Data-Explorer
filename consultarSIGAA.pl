@@ -24,7 +24,7 @@ verificarDepartamento(Matricula) :-
         format('Departamento de Sistemas de Informacao (DSI).~n')
     ;   aluno_DCOMP(_, Matricula, _) ->
         format('Departamento de Computacao (DCOMP).~n')
-    ;   format('A matricula ~w não foi encontrada em nenhum dos departamentos.~n', [Matricula]),
+    ;   format('A matricula ~w nao foi encontrada em nenhum dos departamentos.~n', [Matricula]),
         fail
     ).
 
@@ -40,7 +40,7 @@ buscarAluno(Matricula) :-
         format('A matricula ~w corresponde ao aluno ~w em DSI.~n', [Matricula, Nome])
     ;   aluno_DCOMP(_, Matricula, Nome) ->
         format('A matricula ~w corresponde ao aluno ~w em DCOMP.~n', [Matricula, Nome])
-    ;   format('A matricula ~w não foi encontrada em nenhum dos registros.~n', [Matricula]),
+    ;   format('A matricula ~w nao foi encontrada em nenhum dos registros.~n', [Matricula]),
         fail
     ).
 
@@ -50,6 +50,6 @@ buscarAluno(NomeCompleto) :-
         format('O aluno ~w tem a matrícula ~w em DSI.~n', [NomeCompleto, Matricula])
     ;   aluno_DCOMP(_, Matricula, NomeCompleto) ->
         format('O aluno ~w tem a matrícula ~w em DCOMP.~n', [NomeCompleto, Matricula])
-    ;   format('O aluno ~w não foi encontrado em nenhum dos registros.~n', [NomeCompleto]),
+    ;   format('O aluno ~w nao foi encontrado em nenhum dos registros.~n', [NomeCompleto]),
         fail
     ).
