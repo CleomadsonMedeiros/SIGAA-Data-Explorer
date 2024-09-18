@@ -12,15 +12,13 @@ carregar_arquivo(Arquivo) :-
 :- carregar_arquivo('professores_DSI.pl').
 :- carregar_arquivo('professores_DCOMP.pl').
 
+% Verificar se a matrícula existe em alunos_DSI ou alunos_DCOMP
 verificarAluno(Matricula) :-
-    (   aluno_DSI(_, Matricula, _) ->
-        format('A matricula ~w foi encontrada em alunos_DSI.~n', [Matricula])
-    ;   aluno_DCOMP(_, Matricula, _) ->
-        format('A matricula ~w foi encontrada em alunos_DCOMP.~n', [Matricula])
-    ;   format('A matricula ~w não foi encontrada em nenhum dos registros.~n', [Matricula]),
-        fail
+    (   aluno_DSI(_, Matricula, _)
+    ;   aluno_DCOMP(_, Matricula, _)
     ).
 
+% Verificar o departamento de um aluno com base na matrícula
 verificarDepartamento(Matricula) :-
     (   aluno_DSI(_, Matricula, _) ->
         format('Departamento de Sistemas de Informacao (DSI).~n')
@@ -30,14 +28,10 @@ verificarDepartamento(Matricula) :-
         fail
     ).
 
-%Ser alterada para não precisar colocar o título
+% Verificar se o professor existe em professores_DSI ou professores_DCOMP
 verificarProfessor(NomeCompleto) :-
-    (   professor_DSI(_, NomeCompleto) ->
-        format('O professor ~w foi encontrado em professores_DSI.~n', [NomeCompleto])
-    ;   professor_DCOMP(_, NomeCompleto) ->
-        format('O professor ~w foi encontrado em professores_DCOMP.~n', [NomeCompleto])
-    ;   format('O professor ~w foi encontrado em nenhum dos registros.~n', [NomeCompleto]),
-        fail
+    (   professor_DSI(_, NomeCompleto)
+    ;   professor_DCOMP(_, NomeCompleto)
     ).
 
 % Buscar nome do aluno a partir da matrícula
