@@ -18,7 +18,7 @@ verificar_aluno(Matricula) :-
     ;   aluno_DCOMP(_, Matricula, _)
     ).
 
-% Verificar se o professor existe em professores_DSI ou professores_DCOMP
+% Verificar se o nome do professor existe em professores_DSI ou professores_DCOMP
 verificar_professor(NomeCompleto) :-
     (   professor_DSI(_, NomeCompleto)
     ;   professor_DCOMP(_, NomeCompleto)
@@ -34,7 +34,7 @@ verificar_departamento_aluno(Matricula) :-
         fail
     ).
 
-% Verificar o departamento de um aluno com base no nome completo
+% Verificar o departamento de um professor com base no nome completo
 verificar_departamento_professor(NomeCompleto) :-
     (   professor_DSI(_, NomeCompleto) ->
         format('Departamento de Sistemas de Informacao (DSI).~n')
