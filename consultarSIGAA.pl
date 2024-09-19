@@ -88,3 +88,15 @@ buscar_aluno(PrimeiroNomeFornecido) :-
         format('A matrícula ~w corresponde ao aluno ~w em DCOMP.~n', [Matricula, Nome])
     ;   format('Nenhum aluno encontrado com o primeiro nome ~w.~n', [PrimeiroNomeFornecido]), fail
     ).
+
+buscar_professor(PrimeiroNomeFornecido) :-
+    (   professor_DSI(_, NomeCompleto),
+        primeiro_nome(NomeCompleto, PrimeiroNomeProfessor),
+        PrimeiroNomeFornecido = PrimeiroNomeProfessor ->
+        format('O professor ~w pertence ao DSI.~n', [NomeCompleto])
+    ;   professor_DCOMP(_, NomeCompleto),
+        primeiro_nome(NomeCompleto, PrimeiroNomeProfessor),
+        PrimeiroNomeFornecido = PrimeiroNomeProfessor ->
+        format('O professor ~w pertence ao DCOMP.~n', [NomeCompleto])
+    ;   format('Nenhum professor encontrado com o primeiro nome ~w.~n', [PrimeiroNomeFornecido]), fail
+    ).
